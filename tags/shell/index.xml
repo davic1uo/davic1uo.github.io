@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>bash on luo blog posts</title>
-    <link>https://davic1uo.github.io/tags/bash/</link>
-    <description>Recent content in bash on luo blog posts</description>
+    <title>shell on luo blog posts</title>
+    <link>https://davic1uo.github.io/tags/shell/</link>
+    <description>Recent content in shell on luo blog posts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 04 Sep 2019 19:53:46 +0800</lastBuildDate>
     
-	<atom:link href="https://davic1uo.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://davic1uo.github.io/tags/shell/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -31,12 +31,26 @@
     </item>
     
     <item>
-      <title>Bash Cheatsheet</title>
-      <link>https://davic1uo.github.io/post/bash-cheatsheet/</link>
-      <pubDate>Mon, 02 Sep 2019 21:19:38 +0800</pubDate>
+      <title>Shell Important Files</title>
+      <link>https://davic1uo.github.io/post/shell-important-files/</link>
+      <pubDate>Wed, 04 Sep 2019 19:49:34 +0800</pubDate>
       
-      <guid>https://davic1uo.github.io/post/bash-cheatsheet/</guid>
-      <description>快捷键 用途     ctrl-c 终止程序   ctrl-d 退出login-shell1   alt-f 光标向右跳转，每次1个单词   alt-b 光标向左跳转，每次1个单词   ctrl-a 光标跳转到开头   ctrl-e 光标跳转到最后   ctrl-l 🆑清除(重绘)屏幕   ctrl-r 🔍搜索命令行历史   ctrl-g 退出ctrl-r   sudo!! 重新以sudo身份执行上一条命令   ctrl-k ✂️剪切从光标到命令行行末尾的所有内容   ctrl-u ✂️剪切从光标到命令行最开始的所有内容   ctrl-y 粘贴剪切内容(ctrl-k ctrl-u)   ctrl-w ✂️剪切1个单词(word)   ctrl-x-e(按住ctrl-x-e) 在$EDITOR中打开命令行输入的内容2   alt-.</description>
+      <guid>https://davic1uo.github.io/post/shell-important-files/</guid>
+      <description>关于shell的一些常见文件 在进行个性化shell配置的时候, 经常会遇到许多配置文件, 很容易混乱.这里梳理一下关于shell的配置文件.
+ ~/.bashrc  针对不同用户的bash配置
+ ~/.bash_profile  用于login shell的系统初始化文件(主要是环境变量)
+ /etc/profile  针对所有用户的login shell的配置文件
+ /etc/bashrc  所有用户的bash配置(主要是环境变量).会被~/.bashrc读取
+# ~/.bashrc if [ -f /etc/bashrc ]; then . /etc/bashrc fi  配置文件的主要区别在
+ login shell 还是 interactive-shell 是属于系统的还是属于个人用户的  login shell
+类似*profile的文件都是属于被login shell所使用. 比如 ~/.profile ~/.bash_profile
+ 这些文件只在系统登陆时(login shell)被读取
+ interactive shell
+基本上所有的*rc文件都是用于交互式shell的配置文件. 比如~/.bashrc ~/.zshrc
+ 这些文件会每次在程序启动时被读取
+ stackoverflow 上的回答
+/etc属于系统
+/etc/下的配置文件几乎都是属于系统的配置文件, 而在/home下(~)的配置文件则是属于个人用户的</description>
     </item>
     
   </channel>

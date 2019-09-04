@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="">
+  <meta name="generator" content="Hugo 0.57.2" />
+  <title>Shell Important Files — luo blog posts</title>
+
+  <meta name="description" content="">
+  <link rel="canonical" href="https://davic1uo.github.io/post/shell-important-files/">
+  <link href="" rel="alternate" type="application/rss+xml" title="luo blog posts">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+  <link rel="stylesheet" href="https://davic1uo.github.io/css/highlight.css">
+  <link rel="stylesheet" href="https://davic1uo.github.io/css/paperback.css">
+</head>
+
+
+  <body>
+    <div class="container">
+
+      <header>
+  <h1>Shell Important Files</h1>
+
+  
+  <time datetime="2019-09-04 19:49:34 &#43;0800 CST">2019/09/04</time>
+  
+
+  
+</header>
+
+
+      <article>
+        
+
+<h1 id="关于shell的一些常见文件">关于shell的一些常见文件</h1>
+
+<p>在进行个性化shell配置的时候, 经常会遇到许多配置文件, 很容易混乱.这里梳理一下关于shell的配置文件.</p>
+
+<ul>
+<li>~/.bashrc</li>
+</ul>
+
+<p>针对不同用户的bash配置</p>
+
+<ul>
+<li>~/.bash_profile</li>
+</ul>
+
+<p>用于login shell的系统初始化文件(主要是环境变量)</p>
+
+<ul>
+<li>/etc/profile</li>
+</ul>
+
+<p>针对所有用户的login shell的配置文件</p>
+
+<ul>
+<li>/etc/bashrc</li>
+</ul>
+
+<p>所有用户的bash配置(主要是环境变量).会被~/.bashrc读取</p>
+
+<pre><code class="language-bash">  # ~/.bashrc
+  if [ -f /etc/bashrc ]; then
+          . /etc/bashrc
+  fi
+</code></pre>
+
+<hr />
+
+<p>配置文件的主要区别在</p>
+
+<ol>
+<li>login shell 还是 interactive-shell</li>
+<li>是属于系统的还是属于个人用户的</li>
+</ol>
+
+<p><strong>login shell</strong></p>
+
+<p>类似*profile的文件都是属于被login shell所使用. 比如 <code>~/.profile</code> <code>~/.bash_profile</code></p>
+
+<blockquote>
+<p>这些文件只在系统登陆时(login shell)被读取</p>
+</blockquote>
+
+<p><strong>interactive shell</strong></p>
+
+<p>基本上所有的*rc文件都是用于交互式shell的配置文件. 比如<code>~/.bashrc</code> <code>~/.zshrc</code></p>
+
+<blockquote>
+<p>这些文件会每次在程序启动时被读取</p>
+</blockquote>
+
+<p><a href="https://stackoverflow.com/questions/415403/whats-the-difference-between-bashrc-bash-profile-and-environment ">stackoverflow 上的回答</a></p>
+
+<p><strong>/etc属于系统</strong></p>
+
+<p>/etc/下的配置文件几乎都是属于系统的配置文件, 而在/home下(~)的配置文件则是属于个人用户的</p>
+
+      </article>
+
+      <footer class="site-footer">
+  <span class="owner">©2019 </span>
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-7131036-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+  
+</footer>
+
+
+    </div>
+
+  
+<script src="https://davic1uo.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>

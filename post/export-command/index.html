@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="">
+  <meta name="generator" content="Hugo 0.57.2" />
+  <title>关于export命令 — luo blog posts</title>
+
+  <meta name="description" content="">
+  <link rel="canonical" href="https://davic1uo.github.io/post/export-command/">
+  <link href="" rel="alternate" type="application/rss+xml" title="luo blog posts">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+  <link rel="stylesheet" href="https://davic1uo.github.io/css/highlight.css">
+  <link rel="stylesheet" href="https://davic1uo.github.io/css/paperback.css">
+</head>
+
+
+  <body>
+    <div class="container">
+
+      <header>
+  <h1>关于export命令</h1>
+
+  
+  <time datetime="2019-09-04 19:53:46 &#43;0800 CST">2019/09/04</time>
+  
+
+  
+</header>
+
+
+      <article>
+        
+
+<h1 id="关于export命令">关于export命令</h1>
+
+<p><code>export</code>命令是在POSIX定义了的: <a href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#export">export is defined in POSIX</a>定义中说</p>
+
+<blockquote>
+<p>export - set the export attribute for variables</p>
+</blockquote>
+
+<p>字面上理解是给变量(variable)设置<em>对外的属性</em>(export attribute). 在网上搜索export命令的作用, 都会有&rdquo;设置环境变量&rdquo;这个答案. *export attribute*和环境变量的目的我觉得其实是类似的.</p>
+
+<p>假如在网上搜索&rdquo;如何设置shell环境变量&rdquo;时, 答案可能大概有这几种(假如要设置环境变量\$JAVA_HOME:</p>
+
+<ol>
+<li>直接在shell中执行<code>export JAVA_HOME=/opt/jdk/jdk1.8.0_161</code></li>
+<li>在/etc/profile中添加<code>export JAVA_HOME=/opt/jdk/jdk1.8.0_161</code></li>
+<li>在~/.bash_profile中添加<code>export JAVA_HOME=/opt/jdk/jdk1.8.0_161</code></li>
+</ol>
+
+<p>三种方式都可以设置\$JAVA_HOME环境变量.我的问题是, 既然写在文件里可以设置环境变量,那么执行(1)会把<code>export JAVA_HOME=/opt/jdk/jdk1.8.0_161</code>写到哪个文件去?</p>
+
+<p>假如只执行(1)之后,如果再去查看<code>~/.bash_profile</code>和<code>/etc/profile</code>会发现里面并没有刚刚执行的内容.</p>
+
+<p><strong>这是由于export 并不向任何文件写内容.它的目标是当前进程的内存.</strong></p>
+
+<p>/etc/profile文件是针对<strong>所有用户</strong>的login shell<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>的配置文件.仅能被login shell读取.当l读取这个文件时,export的变量对所有用户都生效.</p>
+
+<p>~/.bash_profile<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>是针对<strong>具体用户</strong>的login shell的配置文件</p>
+
+<p>另外需要注意的是<strong>所有在shell中执行的命令都是当前shell的子进程</strong>. 所以自然地也就继承了主shell export的变量</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">login shell 由很多种, 比如 <a href="https://bash.cyberciti.biz/guide/Bash">bash</a>, <a href="https://bash.cyberciti.biz/guide/Ksh">ksh</a>, <a href="https://bash.cyberciti.biz/guide/Sh">sh</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">当login shell是bash时
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+      </article>
+
+      <footer class="site-footer">
+  <span class="owner">©2019 </span>
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-7131036-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+  
+</footer>
+
+
+    </div>
+
+  
+<script src="https://davic1uo.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>

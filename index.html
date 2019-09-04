@@ -35,13 +35,25 @@
 
         
         <article>
-          <h2><a href="https://davic1uo.github.io/post/bash-cheatsheet/">Bash Cheatsheet</a></h2>
+          <h2><a href="https://davic1uo.github.io/post/tmux-cheetsheet/">Tmux Cheetsheet</a></h2>
 <div>
   
-    快捷键 用途     ctrl-c 终止程序   ctrl-d 退出login-shell1   alt-f 光标向右跳转，每次1个单词   alt-b 光标向左跳转，每次1个单词   ctrl-a 光标跳转到开头   ctrl-e 光标跳转到最后   ctrl-l 🆑清除(重绘)屏幕   ctrl-r 🔍搜索命令行历史   ctrl-g 退出ctrl-r   sudo!! 重新以sudo身份执行上一条命令   ctrl-k ✂️剪切从光标到命令行行末尾的所有内容   ctrl-u ✂️剪切从光标到命令行最开始的所有内容   ctrl-y 粘贴剪切内容(ctrl-k ctrl-u)   ctrl-w ✂️剪切1个单词(word)   ctrl-x-e(按住ctrl-x-e) 在$EDITOR中打开命令行输入的内容2   alt-.
+    tmux cheatsheet [TOC]
+Overview tmux 可以划分为三个部分.
+ session window pane  每当在终端中输入tmux 命令后, 会进入一个session 中的一个window的1个pane中.这三个名词有点像集合.
+$$ pane \subset window \subset session $$
+session
+可以有1个或多个window
+window
+可以有1个或多个pane
+进入session中, ==所有的命令都是通过bind-key + cmd 的形式才可以生效==. 默认的bind-key 是Ctrl-b (Ctrl 和 b)也许经常按Ctrl-b很不习惯. 可以在~/.tmux.conf中修改为自己喜欢的bind-key
+vim ~/.tmux.conf unbind C-b # 取消原来的bind-key set-option -g prefix M-y # 设置新的bind-key为Alt-y   如果映射键盘上的Windows键或者其他的键, 却又不知道按键的编码, 可以在有GUI的Linux系统中运行xev 命令,然后按下相应的键, 就会显示对应的按键代码
+ 从普通终端进入tmux 安装好tmux后, 可以直接在终端中输入:
+tmux  就可以进入tmux.这会让tmux打开一个新的session并且session的名称是默认的. 如果想在新建时, 给它起一个名称, 可以用下面的命令:
+tmux new -s tmux1  将会建立一个名称为tmux1的session.
 
     <footer>
-      <a href="https://davic1uo.github.io/post/bash-cheatsheet/">Read more</a>
+      <a href="https://davic1uo.github.io/post/tmux-cheetsheet/">Read more</a>
     </footer>
   
 </div>
@@ -49,41 +61,127 @@
         </article>
         
         <article>
-          <h2><a href="https://davic1uo.github.io/post/what-is-ascii-ansi-utf-8/">不同编码的区别</a></h2>
+          <h2><a href="https://davic1uo.github.io/post/export-command/">关于export命令</a></h2>
 <div>
   
     
 
-<h1 id="编码标准">编码标准</h1>
+<h1 id="关于export命令">关于export命令</h1>
 
-<p>编码标准好比网络协议。会制定一些规则。常见的编码标准有<code>ANSI</code> <code>ASCII</code> <code>Unicode</code>等。在每个编码标准下，都有自己的字符集<code>code set</code> 字符集就好比莫斯代码表，规定字符编码的样式。</p>
-
-<h1 id="ascii">ASCII</h1>
-
-<p>最早的编码标准，计算机刚问世时，只支持英语。因此ASCII是为英语量身打造的，它使用1字节来表示一个字符。(实际只用了7位,因此ASCII一共只表示128个字符)
-比如0x0d=<CR>回车 0x0a=<LR>换行
-<strong>由于ASCII的编码标准和字符集名称相同，所以ASCII即代表字符集也代表编码协议</strong></p>
-
-<h1 id="ansi">ANSI</h1>
+<p><code>export</code>命令是在POSIX定义了的: <a href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#export">export is defined in POSIX</a>定义中说</p>
 
 <blockquote>
-<p>ANSI标准只用在Windwos中</p>
+<p>export - set the export attribute for variables</p>
 </blockquote>
 
-<p>由于Windwos的流行，对其他语言版本的Windows的需求也越来月急迫。为了解决这个问题，延伸出了<strong>针对不同国家的字符集</strong></p>
+<p>字面上理解是给变量(variable)设置<em>对外的属性</em>(export attribute). 在网上搜索export命令的作用, 都会有&rdquo;设置环境变量&rdquo;这个答案. *export attribute*和环境变量的目的我觉得其实是类似的.</p>
 
-<p>不同的国家或地区开始为自己用的字符编码，比如欧洲把ASCII剩余的编码用来表示带声调的字符。比如(é、ä、Ö ö、Ü ü、ß)的<code>扩展字符集</code> 中文简体的双字节编码<code>GB2312</code> 中文繁体的<code>Big-5</code>等等。</p>
+<p>假如在网上搜索&rdquo;如何设置shell环境变量&rdquo;时, 答案可能大概有这几种(假如要设置环境变量\$JAVA_HOME:</p>
 
-<p>微软将这些编码封装了一层，也就是<code>ANSI</code>编码。它根据Windows上的CodePage值来使用具体的字符集。比如CodePage936=GBK(Win95之前表示GB2312), CodePage950=Big-5</p>
+<ol>
+<li>直接在shell中执行<code>export JAVA_HOME=/opt/jdk/jdk1.8.0_161</code></li>
+<li>在/etc/profile中添加<code>export JAVA_HOME=/opt/jdk/jdk1.8.0_161</code></li>
+<li>在~/.bash_profile中添加<code>export JAVA_HOME=/opt/jdk/jdk1.8.0_161</code></li>
+</ol>
 
-<p>可以通过在<code>cmd</code>命令行中输入<code>chcp 936</code>将默认的ASCII编码切换为GBK(chcp=change code page)</p>
+<p>三种方式都可以设置\$JAVA_HOME环境变量.我的问题是, 既然写在文件里可以设置环境变量,那么执行(1)会把<code>export JAVA_HOME=/opt/jdk/jdk1.8.0_161</code>写到哪个文件去?</p>
 
-<p><a href="https://blog.csdn.net/imxiangzi/article/details/77370160">更多</a></p>
+<p>假如只执行(1)之后,如果再去查看<code>~/.bash_profile</code>和<code>/etc/profile</code>会发现里面并没有刚刚执行的内容.</p>
 
-<h1 id="unicode">Unicode</h1>
+<p><strong>这是由于export 并不向任何文件写内容.它的目标是当前进程的内存.</strong></p>
 
-<p>由于ANSI是每一个国家或地区一个编码标准。不如全世界都用一个编码标准通用性强。所以Unicode就是全世界的编码标准。但是它并未规定字符与编码之间的映射关系(code set 未定义)
-而<code>utf-8</code> <code>utf-16</code> 则是在Unicode标准下的code set</p>
+<p>/etc/profile文件是针对<strong>所有用户</strong>的login shell<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>的配置文件.仅能被login shell读取.当l读取这个文件时,export的变量对所有用户都生效.</p>
+
+<p>~/.bash_profile<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>是针对<strong>具体用户</strong>的login shell的配置文件</p>
+
+<p>另外需要注意的是<strong>所有在shell中执行的命令都是当前shell的子进程</strong>. 所以自然地也就继承了主shell export的变量</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">login shell 由很多种, 比如 <a href="https://bash.cyberciti.biz/guide/Bash">bash</a>, <a href="https://bash.cyberciti.biz/guide/Ksh">ksh</a>, <a href="https://bash.cyberciti.biz/guide/Sh">sh</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">当login shell是bash时
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+  
+</div>
+
+        </article>
+        
+        <article>
+          <h2><a href="https://davic1uo.github.io/post/shell-important-files/">Shell Important Files</a></h2>
+<div>
+  
+    
+
+<h1 id="关于shell的一些常见文件">关于shell的一些常见文件</h1>
+
+<p>在进行个性化shell配置的时候, 经常会遇到许多配置文件, 很容易混乱.这里梳理一下关于shell的配置文件.</p>
+
+<ul>
+<li>~/.bashrc</li>
+</ul>
+
+<p>针对不同用户的bash配置</p>
+
+<ul>
+<li>~/.bash_profile</li>
+</ul>
+
+<p>用于login shell的系统初始化文件(主要是环境变量)</p>
+
+<ul>
+<li>/etc/profile</li>
+</ul>
+
+<p>针对所有用户的login shell的配置文件</p>
+
+<ul>
+<li>/etc/bashrc</li>
+</ul>
+
+<p>所有用户的bash配置(主要是环境变量).会被~/.bashrc读取</p>
+
+<pre><code class="language-bash">  # ~/.bashrc
+  if [ -f /etc/bashrc ]; then
+          . /etc/bashrc
+  fi
+</code></pre>
+
+<hr />
+
+<p>配置文件的主要区别在</p>
+
+<ol>
+<li>login shell 还是 interactive-shell</li>
+<li>是属于系统的还是属于个人用户的</li>
+</ol>
+
+<p><strong>login shell</strong></p>
+
+<p>类似*profile的文件都是属于被login shell所使用. 比如 <code>~/.profile</code> <code>~/.bash_profile</code></p>
+
+<blockquote>
+<p>这些文件只在系统登陆时(login shell)被读取</p>
+</blockquote>
+
+<p><strong>interactive shell</strong></p>
+
+<p>基本上所有的*rc文件都是用于交互式shell的配置文件. 比如<code>~/.bashrc</code> <code>~/.zshrc</code></p>
+
+<blockquote>
+<p>这些文件会每次在程序启动时被读取</p>
+</blockquote>
+
+<p><a href="https://stackoverflow.com/questions/415403/whats-the-difference-between-bashrc-bash-profile-and-environment ">stackoverflow 上的回答</a></p>
+
+<p><strong>/etc属于系统</strong></p>
+
+<p>/etc/下的配置文件几乎都是属于系统的配置文件, 而在/home下(~)的配置文件则是属于个人用户的</p>
 
   
 </div>
