@@ -1,42 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>bash on luo blog posts</title>
-    <link>https://davic1uo.github.io/tags/bash/</link>
-    <description>Recent content in bash on luo blog posts</description>
+    <title>bash on My Blog Posts</title>
+    <link>blog.luozx.me/tags/bash/</link>
+    <description>Recent content in bash on My Blog Posts</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>ja</language>
+    <copyright>&amp;copy;Luo 2019</copyright>
     <lastBuildDate>Wed, 04 Sep 2019 19:53:46 +0800</lastBuildDate>
     
-	<atom:link href="https://davic1uo.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="blog.luozx.me/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>关于export命令</title>
-      <link>https://davic1uo.github.io/post/export-command/</link>
+      <title>About export command</title>
+      <link>blog.luozx.me/post/export-command/</link>
       <pubDate>Wed, 04 Sep 2019 19:53:46 +0800</pubDate>
       
-      <guid>https://davic1uo.github.io/post/export-command/</guid>
-      <description> 关于export命令 export命令是在POSIX定义了的: export is defined in POSIX定义中说
- export - set the export attribute for variables
- 字面上理解是给变量(variable)设置对外的属性(export attribute). 在网上搜索export命令的作用, 都会有&amp;rdquo;设置环境变量&amp;rdquo;这个答案. *export attribute*和环境变量的目的我觉得其实是类似的.
-假如在网上搜索&amp;rdquo;如何设置shell环境变量&amp;rdquo;时, 答案可能大概有这几种(假如要设置环境变量\$JAVA_HOME:
- 直接在shell中执行export JAVA_HOME=/opt/jdk/jdk1.8.0_161 在/etc/profile中添加export JAVA_HOME=/opt/jdk/jdk1.8.0_161 在~/.bash_profile中添加export JAVA_HOME=/opt/jdk/jdk1.8.0_161  三种方式都可以设置\$JAVA_HOME环境变量.我的问题是, 既然写在文件里可以设置环境变量,那么执行(1)会把export JAVA_HOME=/opt/jdk/jdk1.8.0_161写到哪个文件去?
-假如只执行(1)之后,如果再去查看~/.bash_profile和/etc/profile会发现里面并没有刚刚执行的内容.
-这是由于export 并不向任何文件写内容.它的目标是当前进程的内存.
-/etc/profile文件是针对所有用户的login shell1的配置文件.仅能被login shell读取.当l读取这个文件时,export的变量对所有用户都生效.
-~/.bash_profile2是针对具体用户的login shell的配置文件
-另外需要注意的是所有在shell中执行的命令都是当前shell的子进程. 所以自然地也就继承了主shell export的变量
- login shell 由很多种, 比如 bash, ksh, sh [return] 当login shell是bash时 [return]   </description>
+      <guid>blog.luozx.me/post/export-command/</guid>
+      <description>export命令是在POSIX定义了的: export is defined in POSIX定义中说 export - set the export attribute for variables 字面上理解是给变量(variable)设置对外的属性(ex</description>
     </item>
     
     <item>
       <title>Bash Cheatsheet</title>
-      <link>https://davic1uo.github.io/post/bash-cheatsheet/</link>
+      <link>blog.luozx.me/post/bash-cheatsheet/</link>
       <pubDate>Mon, 02 Sep 2019 21:19:38 +0800</pubDate>
       
-      <guid>https://davic1uo.github.io/post/bash-cheatsheet/</guid>
-      <description>快捷键 用途     ctrl-c 终止程序   ctrl-d 退出login-shell1   alt-f 光标向右跳转，每次1个单词   alt-b 光标向左跳转，每次1个单词   ctrl-a 光标跳转到开头   ctrl-e 光标跳转到最后   ctrl-l 🆑清除(重绘)屏幕   ctrl-r 🔍搜索命令行历史   ctrl-g 退出ctrl-r   sudo!! 重新以sudo身份执行上一条命令   ctrl-k ✂️剪切从光标到命令行行末尾的所有内容   ctrl-u ✂️剪切从光标到命令行最开始的所有内容   ctrl-y 粘贴剪切内容(ctrl-k ctrl-u)   ctrl-w ✂️剪切1个单词(word)   ctrl-x-e(按住ctrl-x-e) 在$EDITOR中打开命令行输入的内容2   alt-.</description>
+      <guid>blog.luozx.me/post/bash-cheatsheet/</guid>
+      <description>快捷键 用途 ctrl-c 终止程序 ctrl-d 退出login-shell1 alt-f 光标向右跳转，每次1个单词 alt-b 光标向左跳转，每次1个单词 ctrl-a 光标跳转到开头 ctrl-e 光标跳转到最后 ctrl-l</description>
     </item>
     
   </channel>

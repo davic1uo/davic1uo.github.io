@@ -1,103 +1,60 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on luo blog posts</title>
-    <link>https://davic1uo.github.io/post/</link>
-    <description>Recent content in Posts on luo blog posts</description>
+    <title>Posts on My Blog Posts</title>
+    <link>blog.luozx.me/post/</link>
+    <description>Recent content in Posts on My Blog Posts</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>ja</language>
+    <copyright>&amp;copy;Luo 2019</copyright>
     <lastBuildDate>Wed, 04 Sep 2019 19:57:36 +0800</lastBuildDate>
     
-	<atom:link href="https://davic1uo.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="blog.luozx.me/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tmux Cheetsheet</title>
-      <link>https://davic1uo.github.io/post/tmux-cheetsheet/</link>
+      <link>blog.luozx.me/post/tmux-cheetsheet/</link>
       <pubDate>Wed, 04 Sep 2019 19:57:36 +0800</pubDate>
       
-      <guid>https://davic1uo.github.io/post/tmux-cheetsheet/</guid>
-      <description>tmux cheatsheet [TOC]
-Overview tmux 可以划分为三个部分.
- session window pane  每当在终端中输入tmux 命令后, 会进入一个session 中的一个window的1个pane中.这三个名词有点像集合.
-$$ pane \subset window \subset session $$
-session
-可以有1个或多个window
-window
-可以有1个或多个pane
-进入session中, ==所有的命令都是通过bind-key + cmd 的形式才可以生效==. 默认的bind-key 是Ctrl-b (Ctrl 和 b)也许经常按Ctrl-b很不习惯. 可以在~/.tmux.conf中修改为自己喜欢的bind-key
-vim ~/.tmux.conf unbind C-b # 取消原来的bind-key set-option -g prefix M-y # 设置新的bind-key为Alt-y   如果映射键盘上的Windows键或者其他的键, 却又不知道按键的编码, 可以在有GUI的Linux系统中运行xev 命令,然后按下相应的键, 就会显示对应的按键代码
- 从普通终端进入tmux 安装好tmux后, 可以直接在终端中输入:
-tmux  就可以进入tmux.这会让tmux打开一个新的session并且session的名称是默认的. 如果想在新建时, 给它起一个名称, 可以用下面的命令:
-tmux new -s tmux1  将会建立一个名称为tmux1的session.</description>
+      <guid>blog.luozx.me/post/tmux-cheetsheet/</guid>
+      <description>Overview tmux 可以划分为三个部分. session window pane 每当在终端中输入tmux 命令后, 会进入一个session 中的一个window的1个pane中.这三个名词有点像</description>
     </item>
     
     <item>
-      <title>关于export命令</title>
-      <link>https://davic1uo.github.io/post/export-command/</link>
+      <title>About export command</title>
+      <link>blog.luozx.me/post/export-command/</link>
       <pubDate>Wed, 04 Sep 2019 19:53:46 +0800</pubDate>
       
-      <guid>https://davic1uo.github.io/post/export-command/</guid>
-      <description> 关于export命令 export命令是在POSIX定义了的: export is defined in POSIX定义中说
- export - set the export attribute for variables
- 字面上理解是给变量(variable)设置对外的属性(export attribute). 在网上搜索export命令的作用, 都会有&amp;rdquo;设置环境变量&amp;rdquo;这个答案. *export attribute*和环境变量的目的我觉得其实是类似的.
-假如在网上搜索&amp;rdquo;如何设置shell环境变量&amp;rdquo;时, 答案可能大概有这几种(假如要设置环境变量\$JAVA_HOME:
- 直接在shell中执行export JAVA_HOME=/opt/jdk/jdk1.8.0_161 在/etc/profile中添加export JAVA_HOME=/opt/jdk/jdk1.8.0_161 在~/.bash_profile中添加export JAVA_HOME=/opt/jdk/jdk1.8.0_161  三种方式都可以设置\$JAVA_HOME环境变量.我的问题是, 既然写在文件里可以设置环境变量,那么执行(1)会把export JAVA_HOME=/opt/jdk/jdk1.8.0_161写到哪个文件去?
-假如只执行(1)之后,如果再去查看~/.bash_profile和/etc/profile会发现里面并没有刚刚执行的内容.
-这是由于export 并不向任何文件写内容.它的目标是当前进程的内存.
-/etc/profile文件是针对所有用户的login shell1的配置文件.仅能被login shell读取.当l读取这个文件时,export的变量对所有用户都生效.
-~/.bash_profile2是针对具体用户的login shell的配置文件
-另外需要注意的是所有在shell中执行的命令都是当前shell的子进程. 所以自然地也就继承了主shell export的变量
- login shell 由很多种, 比如 bash, ksh, sh [return] 当login shell是bash时 [return]   </description>
+      <guid>blog.luozx.me/post/export-command/</guid>
+      <description>export命令是在POSIX定义了的: export is defined in POSIX定义中说 export - set the export attribute for variables 字面上理解是给变量(variable)设置对外的属性(ex</description>
     </item>
     
     <item>
-      <title>Shell Important Files</title>
-      <link>https://davic1uo.github.io/post/shell-important-files/</link>
+      <title>Shell 常见配置文件</title>
+      <link>blog.luozx.me/post/shell-important-files/</link>
       <pubDate>Wed, 04 Sep 2019 19:49:34 +0800</pubDate>
       
-      <guid>https://davic1uo.github.io/post/shell-important-files/</guid>
-      <description>关于shell的一些常见文件 在进行个性化shell配置的时候, 经常会遇到许多配置文件, 很容易混乱.这里梳理一下关于shell的配置文件.
- ~/.bashrc  针对不同用户的bash配置
- ~/.bash_profile  用于login shell的系统初始化文件(主要是环境变量)
- /etc/profile  针对所有用户的login shell的配置文件
- /etc/bashrc  所有用户的bash配置(主要是环境变量).会被~/.bashrc读取
-# ~/.bashrc if [ -f /etc/bashrc ]; then . /etc/bashrc fi  配置文件的主要区别在
- login shell 还是 interactive-shell 是属于系统的还是属于个人用户的  login shell
-类似*profile的文件都是属于被login shell所使用. 比如 ~/.profile ~/.bash_profile
- 这些文件只在系统登陆时(login shell)被读取
- interactive shell
-基本上所有的*rc文件都是用于交互式shell的配置文件. 比如~/.bashrc ~/.zshrc
- 这些文件会每次在程序启动时被读取
- stackoverflow 上的回答
-/etc属于系统
-/etc/下的配置文件几乎都是属于系统的配置文件, 而在/home下(~)的配置文件则是属于个人用户的</description>
+      <guid>blog.luozx.me/post/shell-important-files/</guid>
+      <description>在进行个性化shell配置的时候, 经常会遇到许多配置文件, 很容易混乱.这里梳理一下关于shell的配置文件. ~/.bashrc 针对不同用户的bash配置 ~/.bash_profile 用</description>
     </item>
     
     <item>
       <title>Bash Cheatsheet</title>
-      <link>https://davic1uo.github.io/post/bash-cheatsheet/</link>
+      <link>blog.luozx.me/post/bash-cheatsheet/</link>
       <pubDate>Mon, 02 Sep 2019 21:19:38 +0800</pubDate>
       
-      <guid>https://davic1uo.github.io/post/bash-cheatsheet/</guid>
-      <description>快捷键 用途     ctrl-c 终止程序   ctrl-d 退出login-shell1   alt-f 光标向右跳转，每次1个单词   alt-b 光标向左跳转，每次1个单词   ctrl-a 光标跳转到开头   ctrl-e 光标跳转到最后   ctrl-l 🆑清除(重绘)屏幕   ctrl-r 🔍搜索命令行历史   ctrl-g 退出ctrl-r   sudo!! 重新以sudo身份执行上一条命令   ctrl-k ✂️剪切从光标到命令行行末尾的所有内容   ctrl-u ✂️剪切从光标到命令行最开始的所有内容   ctrl-y 粘贴剪切内容(ctrl-k ctrl-u)   ctrl-w ✂️剪切1个单词(word)   ctrl-x-e(按住ctrl-x-e) 在$EDITOR中打开命令行输入的内容2   alt-.</description>
+      <guid>blog.luozx.me/post/bash-cheatsheet/</guid>
+      <description>快捷键 用途 ctrl-c 终止程序 ctrl-d 退出login-shell1 alt-f 光标向右跳转，每次1个单词 alt-b 光标向左跳转，每次1个单词 ctrl-a 光标跳转到开头 ctrl-e 光标跳转到最后 ctrl-l</description>
     </item>
     
     <item>
-      <title>不同编码的区别</title>
-      <link>https://davic1uo.github.io/post/what-is-ascii-ansi-utf-8/</link>
+      <title>编码标准和字符集</title>
+      <link>blog.luozx.me/post/what-is-ascii-ansi-utf-8/</link>
       <pubDate>Sat, 31 Aug 2019 21:21:41 +0800</pubDate>
       
-      <guid>https://davic1uo.github.io/post/what-is-ascii-ansi-utf-8/</guid>
-      <description>编码标准 编码标准好比网络协议。会制定一些规则。常见的编码标准有ANSI ASCII Unicode等。在每个编码标准下，都有自己的字符集code set 字符集就好比莫斯代码表，规定字符编码的样式。
-ASCII 最早的编码标准，计算机刚问世时，只支持英语。因此ASCII是为英语量身打造的，它使用1字节来表示一个字符。(实际只用了7位,因此ASCII一共只表示128个字符) 比如0x0d=回车 0x0a=换行 由于ASCII的编码标准和字符集名称相同，所以ASCII即代表字符集也代表编码协议
-ANSI  ANSI标准只用在Windwos中
- 由于Windwos的流行，对其他语言版本的Windows的需求也越来月急迫。为了解决这个问题，延伸出了针对不同国家的字符集
-不同的国家或地区开始为自己用的字符编码，比如欧洲把ASCII剩余的编码用来表示带声调的字符。比如(é、ä、Ö ö、Ü ü、ß)的扩展字符集 中文简体的双字节编码GB2312 中文繁体的Big-5等等。
-微软将这些编码封装了一层，也就是ANSI编码。它根据Windows上的CodePage值来使用具体的字符集。比如CodePage936=GBK(Win95之前表示GB2312), CodePage950=Big-5
-可以通过在cmd命令行中输入chcp 936将默认的ASCII编码切换为GBK(chcp=change code page)
-更多
-Unicode 由于ANSI是每一个国家或地区一个编码标准。不如全世界都用一个编码标准通用性强。所以Unicode就是全世界的编码标准。但是它并未规定字符与编码之间的映射关系(code set 未定义) 而utf-8 utf-16 则是在Unicode标准下的code set</description>
+      <guid>blog.luozx.me/post/what-is-ascii-ansi-utf-8/</guid>
+      <description>编码标准 编码标准好比网络协议。会制定一些规则。常见的编码标准有ANSI ASCII Unicode等。在每个编码标准下，都有自己的字符集code set 字符集</description>
     </item>
     
   </channel>
